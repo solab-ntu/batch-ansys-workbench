@@ -5,7 +5,7 @@
 \usepackage{listings}
 \usepackage{verbatim}
 \usepackage{enumerate}
-\usepackage{amsmath, amsfonts, amssymb, mathtools}  % AMS數學模組
+\usepackage{amsmath, amsfonts, amssymb, mathtools}
 \usepackage{bm}
 \usepackage{pagecolor}
 \usepackage{changepage}
@@ -51,7 +51,6 @@
 \renewcommand\thetable{\Alph{section}\arabic{table}}
 }
 
-% -- bibtex 不要出現 Reference 的 title，我用 Section 來作
 \usepackage{etoolbox}
 \patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
 % --
@@ -59,7 +58,6 @@
 \setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{10pt}
 
-% 首段空格
 \setlength{\parindent}{0em}
 
 % English Font and color, rm/ss/tt
@@ -73,8 +71,6 @@
 % ----
 
 \begin{document}
-
-%  bsmi (明體), bkai (楷書), DFKai-SB
 \begin{CJK}{UTF8}{bkai} 
 \title{\textbf{Optimization in Engineering \\ Appendix - Run ANSYS Workbench in batch mode}}
 % \lhead{Optimal Design}
@@ -85,14 +81,15 @@
 % -----------------------------------------------
 \section{Introduction}
 
-This document is only used for academic purpose and released in MIT License. We demonstrate how to change the ANSYS Workbench project's parameters (or variables) and execute the simulation in batch mode (command line) with Python script under Windows OS.\\
+This document and example file are only used for academic purpose and released in MIT License. We demonstrate how to use batch mode with Python script to change the ANSYS Workbench's parameters (or variables), execute the simulation and export results to text file.\\
 
-We are \underline{\textbf{not}} encourage students to use commercial softwares. But the basic concept of the integration of your program with other softwares should be similiar.
+The basic concept of the integration for your program with other softwares should be similiar.
 
 % -----------------------------------------------
 \section{Install ANSYS Student}
 
-Download the ANSYS Student Software from : \textbf{https://www.ansys.com/academic/free-student-products} and follow the installation instruction in the website.
+We are \underline{\textbf{not}} encourage students to use commercial softwares without license. The ANSYS Student Software is provided a twelve-month renewable license and limited with 32k nodes/elements in Structure Analysis, 512k nodes/cells in Fluid Analysis. You can 
+download it from the website : \textbf{https://www.ansys.com/academic/free-student-products}
 
 \begin{figure}[h]
 	\centering
@@ -101,14 +98,12 @@ Download the ANSYS Student Software from : \textbf{https://www.ansys.com/academi
 	\label{fig:download_ansys}
 \end{figure}
 
-The ANSYS Student Software is provided a twelve-month renewable license and limited with 32k nodes/elements in Structure Analysis, 512k nodes/cells in Fluid Analysis.
-
 % -----------------------------------------------
 \section{Example}
 
 \subsection{Download}
 
-Download the example file from CEIBA or GitHub :
+Download the example file from NTU CEIBA or GitHub :
 \textbf{https://github.com/solab-ntu/batch-ansys-workbench} .The file \textbf{example.zip} should contain at least 4 items which include following files/folder:
 
 \begin{itemize}
@@ -122,7 +117,7 @@ The project file (model\_v192\_student.wbpj) should only be opened in ANSYS Stud
 
 \subsection{Problem Description}
 
-In this project file, we construct a cantilever beam which has three sections as shown in Figure \ref{fig:cantilever}. Each section has a circle sketch and uses the diameter size as the design variables.\\
+In this model, we construct a cantilever beam which has three sections as shown in Figure \ref{fig:cantilever}. Each section has a circle sketch and uses the diameter size as the design variables.\\
 
 \begin{figure}[h]
 	\centering
@@ -131,7 +126,7 @@ In this project file, we construct a cantilever beam which has three sections as
 	\label{fig:cantilever}
 \end{figure}
 
-In simulation, we fixed one end of the beam and apply a 100 [N] force (+x) on the other end. The stress and deformation distribution are shown in Figure \ref{fig:anslysis}. Then we can retrieve the response values to Parameter Set Table, as shown in Figure \ref{fig:parameters}.
+In structural simulation, we fixed one end of the beam and apply a 100 [N] force (+x) on the other end. The stress and deformation distribution are shown in Figure \ref{fig:anslysis}. Then we can retrieve the response values to Parameter Set Table, as shown in Figure \ref{fig:parameters}.
 
 \begin{figure}[h]
 	\centering
@@ -153,11 +148,11 @@ In simulation, we fixed one end of the beam and apply a 100 [N] force (+x) on th
 \begin{itemize}
   \item batch\_run\_ansys.py
 
-Before start running batch mode. We need to ckeck the project file location in the script. This file path might be different in your computer.
+Before running the batch mode. You need to ckeck the project file's location in the script. This file path might be different in your computer.
 
 \lstinputlisting[language=Python, firstline=1, lastline=4]{./code/batch_run_ansys.py}
 
-Then we can decide which parameter should be changed and modify the value by the "Expression" argument.
+Then you can decide which parameter should be changed and modify the value by the "Expression" argument.
 
 \lstinputlisting[language=Python, firstline=5, lastline=17, firstnumber=5]{./code/batch_run_ansys.py}
 
@@ -171,7 +166,7 @@ After updating the project. We can use Python file I/O function to write out the
   \item batch\_cmd.bat
   \lstinputlisting[language=Python]{./code/batch_cmd.bat}
 
-  The first part of this .bat file is the path of ANSYS WB program, and the others mean running the program with batch\_run\_ansys.py in batch mode. This two files (batch\_run\_ansys.py and batch\_cmd.bat) should be placed in the same folder.
+  The first part of this .bat file is the path of ANSYS WB program, and the arguement means running the program with batch\_run\_ansys.py in batch mode. This two files (batch\_run\_ansys.py and batch\_cmd.bat) should be placed in the same folder.
 \end{itemize}
 
 After double clicking batch\_cmd.bat. It will appear two MS-DOS windows as shown in Figure \ref{fig:batch}, and create output.txt when it finished. The output.txt will contain the parameter's information of the project file. \\
