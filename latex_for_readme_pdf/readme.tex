@@ -81,14 +81,12 @@
 % -----------------------------------------------
 \section{Introduction}
 
-This document and example file are only used for academic purpose and released in MIT License. We demonstrate how to use batch mode with Python script to change the ANSYS Workbench's parameters (or variables), execute the simulation and export results to text file.\\
-
-The basic concept of the integration for your program with other softwares should be similiar.
+This document and example file are only used for academic purpose and released in MIT License. We demonstrate how to use batch mode with Python script to change the ANSYS Workbench's parameters (or variables), then execute the simulation and export results to a text file.
 
 % -----------------------------------------------
 \section{Install ANSYS Student}
 
-We are \underline{\textbf{not}} encourage students to use commercial softwares without license. The ANSYS Student Software is provided a twelve-month renewable license and limited with 32k nodes/elements in Structure Analysis, 512k nodes/cells in Fluid Analysis. You can 
+We are \underline{\textbf{not}} encourage students to use commercial softwares without license. The ANSYS Student Software provide a twelve-month renewable license which is limited with 32k nodes/elements in Structure Analysis, 512k nodes/cells in Fluid Analysis. You can 
 download it from the website : \textbf{https://www.ansys.com/academic/free-student-products}
 
 \begin{figure}[h]
@@ -101,10 +99,9 @@ download it from the website : \textbf{https://www.ansys.com/academic/free-stude
 % -----------------------------------------------
 \section{Example}
 
-\subsection{Download}
+\subsection{Files}
 
-Download the example file from NTU CEIBA or GitHub :
-\textbf{https://github.com/solab-ntu/batch-ansys-workbench} .The file \textbf{example.zip} should contain at least 4 items which include following files/folder:
+The \textbf{example.zip} should contain at least four items which include following files/folder:
 
 \begin{itemize}
   \item model\_v192\_student.wbpj
@@ -117,7 +114,7 @@ The project file (model\_v192\_student.wbpj) should only be opened in ANSYS Stud
 
 \subsection{Problem Description}
 
-In this model, we construct a cantilever beam which has three sections as shown in Figure \ref{fig:cantilever}. Each section has a circle sketch and uses the diameter size as the design variables.\\
+In this model, we construct a cantilever beam which has three sections as shown in Figure \ref{fig:cantilever}. Each section has a circle sketch and uses the diameter as the design variables.\\
 
 \begin{figure}[h]
 	\centering
@@ -126,7 +123,9 @@ In this model, we construct a cantilever beam which has three sections as shown 
 	\label{fig:cantilever}
 \end{figure}
 
-In structural simulation, we fixed one end of the beam and apply a 100 [N] force (+x) on the other end. The stress and deformation distribution are shown in Figure \ref{fig:anslysis}. Then we can retrieve the response values to Parameter Set Table, as shown in Figure \ref{fig:parameters}.
+In structural simulation, we fixed one end of the beam and apply a 100 [N] force (+x) on the other side. The stress and deformation distribution are shown in Figure \ref{fig:anslysis}. Then we can retrieve the response values to Parameter Set Table, as shown in Figure \ref{fig:parameters}.
+
+\newpage
 
 \begin{figure}[h]
 	\centering
@@ -148,17 +147,17 @@ In structural simulation, we fixed one end of the beam and apply a 100 [N] force
 \begin{itemize}
   \item batch\_run\_ansys.py
 
-Before running the batch mode. You need to ckeck the project file's location in the script. This file path might be different in your computer.
-
 \lstinputlisting[language=Python, firstline=1, lastline=4]{./code/batch_run_ansys.py}
 
-Then you can decide which parameter should be changed and modify the value by the "Expression" argument.
+You need to modify the project file's location in code line 3 before running the batch mode. This file path might be different in your computer.\\
 
 \lstinputlisting[language=Python, firstline=5, lastline=17, firstnumber=5]{./code/batch_run_ansys.py}
 
-After updating the project. We can use Python file I/O function to write out the parameter's information to a plain text file.
+Then you can decide which parameter should be changed and modify the value by the "Expression" argument.\\
 
 \lstinputlisting[language=Python, firstline=22, lastline=30, firstnumber=22]{./code/batch_run_ansys.py}
+
+After updating the project. Use Python file I/O function to write out the parameter's information to a text file.
 
 \end{itemize}
 
@@ -169,7 +168,7 @@ After updating the project. We can use Python file I/O function to write out the
   The first part of this .bat file is the path of ANSYS WB program, and the arguement means running the program with batch\_run\_ansys.py in batch mode. This two files (batch\_run\_ansys.py and batch\_cmd.bat) should be placed in the same folder.
 \end{itemize}
 
-After double clicking batch\_cmd.bat. It will appear two MS-DOS windows as shown in Figure \ref{fig:batch}, and create output.txt when it finished. The output.txt will contain the parameter's information of the project file. \\
+After executing the batch\_cmd.bat. It will appear two MS-DOS windows as shown in Figure \ref{fig:batch}, and create output.txt when it finished. The output.txt will contain the parameter's information of the project file. \\
 
 For the detailed operation procedure, please check the video : \\
 \textbf{https://www.youtube.com/watch?v=jGWYmR0uqtU}
