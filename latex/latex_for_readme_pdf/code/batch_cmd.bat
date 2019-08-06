@@ -1,1 +1,0 @@
-"D:\Program Files\ANSYS Inc\ANSYS Student\v192\Framework\bin\Win64\RunWB2.exe" -B -R "batch_run_ansys.py"
