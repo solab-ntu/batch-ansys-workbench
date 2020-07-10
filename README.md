@@ -113,5 +113,3 @@ After executing the batch\_cmd.bat. It will appear two MS-DOS windows as shown i
 | ![fig:output](./pics/output.png) |
 | :-: |
 | *Figure 6: output.txt* |
-
-For the detailed operation procedure, please check the video : https://www.youtube.com/watch?v=jGWYmR0uqtU
