@@ -1,6 +1,6 @@
 # ANSYS Workbench Batch Mode
 
-A demo example for using ANSYS Workbench batch mode with Python scripting in **ANSYS Student v19.2** .
+A demo example for using ANSYS Workbench Student v19.2 batch mode with Python script.
 
 [TOC]
 
